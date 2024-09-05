@@ -51,6 +51,15 @@ public class CourseDeliveryService {
         return courseDeliveryRepository.save(courseDelivery);
     }
 
+    //    extra for listing course instances
+    public List<CourseDelivery> getCourseDeliveryBySemester(int semester) {
+        return courseDeliveryRepository.findBySemester(semester);
+    }
+
+    public List<CourseDelivery> getCourseDelivery() {
+        return courseDeliveryRepository.findAll();
+    }
+    //
 
     public List<CourseDelivery> getCourseDeliveryByYearAndSemester(int year, int semester) {
         return courseDeliveryRepository.findByYearAndSemester(year, semester);

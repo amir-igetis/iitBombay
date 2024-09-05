@@ -8,6 +8,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:5173")
 public class CourseDeliveryController {
 
     private final CourseDeliveryService courseDeliveryService;
@@ -27,6 +28,20 @@ public class CourseDeliveryController {
     ) {
         return courseDeliveryService.getCourseDeliveryByYearAndSemester(year, semester);
     }
+
+    //    extra for listing course instances
+    @GetMapping("/instances/{semester}")
+    public List<CourseDelivery> getCourseInstanceBySemester(
+            @PathVariable int semester
+    ) {
+        return courseDeliveryService.getCourseDeliveryBySemester(semester);
+    }
+
+    @GetMapping("/instances")
+    public List<CourseDelivery> getCourseInstances() {
+        return courseDeliveryService.getCourseDelivery();
+    }
+    //
 
     @GetMapping("/instances/{year}/{semester}/{courseId}")
     public Optional<CourseDelivery> getCourseInstance(@PathVariable int year, @PathVariable int semester, @PathVariable Integer courseId) {

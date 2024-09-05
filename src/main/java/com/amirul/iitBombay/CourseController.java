@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:5173")
 public class CourseController {
 
     private final CourseService courseService;
@@ -35,7 +36,7 @@ public class CourseController {
 
     @DeleteMapping("/courses/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteCourse(@PathVariable Integer id){
+    public void deleteCourse(@PathVariable Integer id) {
         courseService.deleteCourse(id);
     }
 
